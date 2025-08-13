@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CheckCircle, QrCode } from "lucide-react";
+import { CheckCircle, QrCode, Download, Share2 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
@@ -17,6 +17,51 @@ export const ProfileHeader = ({ profileImage, name, bio, isVerified = false }: P
     const currentUrl = window.location.href;
     const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(currentUrl)}`;
     return qrCodeUrl;
+  };
+
+  const downloadQRCode = async () => {
+    try {
+      const qrCodeUrl = generateQRCode();
+      const response = await fetch(qrCodeUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${name.replace(/\s+/g, '_')}_QR_Code.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Failed to download QR code:', error);
+    }
+  };
+
+  const shareQRCode = async () => {
+    if (navigator.share) {
+      try {
+        const qrCodeUrl = generateQRCode();
+        const response = await fetch(qrCodeUrl);
+        const blob = await response.blob();
+        const file = new File([blob], `${name.replace(/\s+/g, '_')}_QR_Code.png`, { type: 'image/png' });
+        
+        await navigator.share({
+          title: `${name}'s Profile QR Code`,
+          text: `QR code to visit ${name}'s profile`,
+          files: [file]
+        });
+      } catch (error) {
+        // Fallback to copying URL if file sharing fails
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(window.location.href);
+          alert('Profile URL copied to clipboard!');
+        }
+      }
+    } else if (navigator.clipboard) {
+      // Fallback for browsers without Web Share API
+      navigator.clipboard.writeText(window.location.href);
+      alert('Profile URL copied to clipboard!');
+    }
   };
 
   return (
@@ -76,6 +121,24 @@ export const ProfileHeader = ({ profileImage, name, bio, isVerified = false }: P
               <p className="text-sm text-muted-foreground text-center">
                 Scan this QR code to visit this profile
               </p>
+              <div className="flex gap-2 w-full">
+                <Button 
+                  onClick={shareQRCode}
+                  className="flex-1 gap-2"
+                  variant="default"
+                >
+                  <Share2 className="w-4 h-4" />
+                  Share
+                </Button>
+                <Button 
+                  onClick={downloadQRCode}
+                  className="flex-1 gap-2"
+                  variant="outline"
+                >
+                  <Download className="w-4 h-4" />
+                  Download
+                </Button>
+              </div>
             </div>
           </DialogContent>
         </Dialog>

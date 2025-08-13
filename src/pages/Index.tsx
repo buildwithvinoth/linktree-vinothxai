@@ -46,12 +46,6 @@ const Index = () => {
       description: "VFC Ad Prompt for AI tools",
     },
     {
-      icon: <FileText className="w-6 h-6" />,
-      label: "Blog",
-      href: "https://blog.vinoth.dev",
-      description: "Articles & technical writing"
-    },
-    {
       icon: <Coffee className="w-6 h-6" />,
       label: "Buy me a coffee",
       href: "https://buymeacoffee.com/vinoth_x_ai",
