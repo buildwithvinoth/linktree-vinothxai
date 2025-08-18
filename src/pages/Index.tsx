@@ -11,7 +11,8 @@ import {
   Briefcase, 
   FileText,
   Coffee, Brain,
-  Paperclip
+  Paperclip,
+  BadgeCheck 
 } from "lucide-react";
 
 const Index = () => {
@@ -44,6 +45,12 @@ const Index = () => {
       label: "VFC Ad Prompt",
       href: "https://docs.google.com/document/d/1WB5V8BThe89jz0XnSLwLcAAmgV970qGPdUKln8UkPAc/edit?usp=sharing",
       description: "VFC Ad Prompt for AI tools",
+    },
+    {
+      icon: <BadgeCheck className="w-6 h-6" />,
+      label: "Fiverr",
+      href: "http://www.fiverr.com/s/DBa6zNa",
+      description: "Fiverr profile for freelance services",
     },
     {
       icon: <Coffee className="w-6 h-6" />,
