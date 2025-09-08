@@ -47,6 +47,12 @@ const Index = () => {
       description: "VFC Ad Prompt for AI tools",
     },
     {
+      icon: <Paperclip className="w-6 h-6" />,
+      label: "🍌 NanBan Prompt",
+      href: "https://docs.google.com/document/d/1jVPAKgYov-B5jRTGrKHC2EauHG-Tvdrg5s6Z65I8frU/edit?usp=sharing",
+      description: "NanBan Prompt for AI tools",
+    },
+    {
       icon: <BadgeCheck className="w-6 h-6" />,
       label: "Fiverr",
       href: "http://www.fiverr.com/s/DBa6zNa",
