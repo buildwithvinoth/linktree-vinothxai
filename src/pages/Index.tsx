@@ -53,6 +53,12 @@ const Index = () => {
       description: "NanBan Prompt for AI tools",
     },
     {
+      icon: <Paperclip className="w-6 h-6" />,
+      label: "🇪🇸Thalapathy Prompt",
+      href: "https://docs.google.com/document/d/1uSszaXOD7GApylem6hQH2kEfrv23AxWEBZ-1rdmLGoE/edit?usp=sharing",
+      description: "Nano Banana + Thalapathy Prompt for AI tools",
+    },
+    {
       icon: <BadgeCheck className="w-6 h-6" />,
       label: "Fiverr",
       href: "http://www.fiverr.com/s/DBa6zNa",
