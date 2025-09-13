@@ -59,6 +59,12 @@ const Index = () => {
       description: "Nano Banana + Thalapathy Prompt for AI tools",
     },
     {
+      icon: <Paperclip className="w-6 h-6" />,
+      label: "AI Prompt Pack: Men’s Suit Photography & Styling",
+      href: "https://docs.google.com/document/d/1Qnf9MPsgE14P9v_7oSeN592sasrYjcVjFOwki04wCas/edit?usp=sharing",
+      description: "AI Prompt Pack to create Men’s Suit Photography & Styling",
+    },
+    {
       icon: <BadgeCheck className="w-6 h-6" />,
       label: "Fiverr",
       href: "http://www.fiverr.com/s/DBa6zNa",
